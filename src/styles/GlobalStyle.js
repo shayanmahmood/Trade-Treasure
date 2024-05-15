@@ -98,6 +98,34 @@ const GlobalStyles = createGlobalStyle`
 
 }
 
+
+
+/*-- VARIABLES CSS--*/
+/*Colores*/
+:root{
+    --first-color: #DCBE93;
+    --second-color: #e6bf87;
+    --third-color: #FFE8DF;
+    --accent-color: #FF5151;
+    --dark-color: #161616;
+}
+
+/*Tipografia responsive*/
+:root{
+    --body-font: 'Open Sans';
+    --h1-font-size: 1.5rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: 0.938rem;
+    --smaller-font-size: 0.75rem;
+}
+@media screen and (min-width: 768px){
+    :root{
+        --h1-font-size: 2rem;
+        --normal-font-size: 1rem;
+        --smaller-font-size: 0.813rem;
+    }
+}
+
 *,
 *::before,
 *::after {
@@ -186,7 +214,35 @@ img {
   filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
 }
 
+
+/*-- BASE --*/
+.Product_img{
+    max-width: 100%;
+    height: auto;
+}
+a{
+    text-decoration: none;
+}
+
+/*-- LAYAOUT --*/
+.main {
+    padding: 2rem 0;
+}
+.bd-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    max-width: 1200px;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+
 `;
+
+
 
 export default GlobalStyles;
 
