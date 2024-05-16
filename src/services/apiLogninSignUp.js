@@ -9,6 +9,7 @@ export async function SignUp({ fullName, email, password }) {
             data: {
                 fullName,
                 avatar: "",
+                cart: []
             }
         }
     })

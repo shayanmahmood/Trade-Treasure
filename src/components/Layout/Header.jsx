@@ -218,19 +218,25 @@ function Header() {
                 onClose={handleCloseUserMenu}
               >
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography variant="h2" textAlign="center">
-                    Welcome {user?.user_metadata?.fullName}
-                  </Typography>
+                  <Link to="/">
+                    <Typography variant="h2" textAlign="center">
+                      Welcome {user?.user_metadata?.fullName}
+                    </Typography>
+                  </Link>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography variant="h2" textAlign="center">
-                    <Link to="/profile">My Profile</Link>
-                  </Typography>
+                  <Link to="/profile">
+                    <Typography variant="h2" textAlign="center">
+                      My Profile
+                    </Typography>
+                  </Link>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography variant="h2" textAlign="center">
-                    Dashboard
-                  </Typography>
+                  <Link to='/cart'>
+                    <Typography variant="h2" textAlign="center">
+                      My Cart
+                    </Typography>
+                  </Link>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography variant="h2" textAlign="center">

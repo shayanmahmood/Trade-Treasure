@@ -9,5 +9,5 @@ export default function useUser() {
     })
 
 
-    return { user, isLoading, isAuthenticated: user?.role === 'authenticated' }
+    return { user, isLoading, isAuthenticated: user?.role === 'authenticated', cart: user?.user_metadata.cart }
 }
