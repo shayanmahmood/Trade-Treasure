@@ -3,7 +3,7 @@ import { useProducts } from "../features/products/hooks/useProducts";
 import Spinner from "../ui/Spinner";
 
 function Store() {
-  const { products, isLoading } = useProducts();
+  const { isLoading } = useProducts();
   if (isLoading) return <Spinner />;
   return <Products />;
 }

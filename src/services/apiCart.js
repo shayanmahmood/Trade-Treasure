@@ -1,11 +1,20 @@
 import supabase, { supabaseUrl } from "./supabase";
 
-export async function addCart({ item }) {
+export async function addCart(cart) {
 
-    if (item !== undefined) {
+    if (cart !== undefined) {
         const { data, error } = await supabase.auth.updateUser({
-
+            data: {
+                cart: cart
+            }
 
         })
+
+        if (error) {
+            console.log(error)
+        }
+
+        console.log(data)
+        return { data }
     }
 }

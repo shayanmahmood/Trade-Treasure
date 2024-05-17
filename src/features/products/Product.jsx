@@ -1,15 +1,12 @@
-import { useState } from "react";
-import useUser from "../authentication/hooks/useUser";
+import useCart from "./hooks/useCart";
 
-function Product({ product }) {
-  const { cart } = useUser();
-  const [userCart, setUserCart] = useState(cart);
+function Product({ product, cart, setUserCart }) {
+
+  const { isLoading, mutate } = useCart()
 
   function handleClick() {
-    console.log(product);
-    setUserCart((cart) => {
-      return [...cart, product];
-    });
+    setUserCart((cart) => [...cart, product])
+    mutate(cart)
   }
 
   return (
@@ -38,7 +35,7 @@ function Product({ product }) {
               {product.product_price}
             </p>
           </del>
-          <div className="ml-auto cursor-pointer" onClick={handleClick}>
+          <div className={isLoading ? `ml-auto cursor-pointer rounded-lg px-4 py-2 bg-green-700 text-green-100 opacity-50 cursor-not-allowed didsabled:cursor-not-allowed disabled:opacity-50` : `ml-auto cursor-pointer rounded-lg px-4 py-2 bg-green-700 text-green-100 opacity-50`} onClick={handleClick}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
