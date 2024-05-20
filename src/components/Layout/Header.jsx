@@ -14,7 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import styled from "styled-components";
 import useUser from "../../features/authentication/hooks/useUser";
 import { Link } from "react-router-dom";
-
+import useLogOut from '../../features/authentication/hooks/useLogOut'
+import Spinner from "../../ui/Spinner";
 const Img = styled.img`
   height: 20px;
   width: 20px;
@@ -25,6 +26,7 @@ function Header() {
   const { avatar } = user?.user_metadata;
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const { logOut, isLoading } = useLogOut()
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -40,6 +42,12 @@ function Header() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+
+  const handleLogout = () => {
+    setAnchorElUser(null);
+    logOut()
+  }
 
   function stringToColor(string) {
     let hash = 0;
@@ -73,6 +81,7 @@ function Header() {
     };
   }
 
+  if (isLoading) return <Spinner />
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -238,7 +247,7 @@ function Header() {
                     </Typography>
                   </Link>
                 </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={handleLogout}>
                   <Typography variant="h2" textAlign="center">
                     LogOut
                   </Typography>

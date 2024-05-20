@@ -86,40 +86,13 @@ export async function UpdateUser({ fullName, password, avatar }) {
     }
 
     return ReUser
+}
 
+export async function LogOut() {
 
-    // if (password && fullName) {
-    //     const { data, error } = await supabase.auth.updateUser({
-    //         fullName: fullName,
-    //         password: password,
-    //     })
-    //     if (error) {
-    //         throw new Error("unable to update")
-    //     }
+    const { error } = await supabase.auth.signOut()
 
-    //     if (!avatar) return { data }
-
-
-    //     let fileName = `avatar-${data.user.id}-${crypto.randomUUID()}`
-
-    //     const { error: UploadError } = supabase.storage.from('Avatars').upload(fileName, avatar)
-
-    //     if (UploadError) {
-    //         throw new Error(UploadError.message)
-    //     }
-
-    //     const { data: ReUser, error: UpdateError } = await supabase.auth.updateUser({
-    //         data: {
-    //             avatar: `${supabaseUrl}/storage/v1/object/public/Avatars/${fileName}`
-    //         }
-    //     })
-
-    //     if (UpdateError) {
-    //         throw new Error(UpdateError.message)
-    //     }
-
-    //     return ReUser
-    // }
-
-    // return Error("INvalid")
+    if (error) {
+        throw new Error(error)
+    }
 }

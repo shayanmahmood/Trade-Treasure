@@ -1,4 +1,4 @@
-import supabase, { supabaseUrl } from "./supabase";
+import supabase from "./supabase";
 
 export async function addCart(cart) {
 
@@ -11,10 +11,24 @@ export async function addCart(cart) {
         })
 
         if (error) {
-            console.log(error)
+            throw new Error(error)
         }
 
-        console.log(data)
         return { data }
     }
+}
+
+export async function emptyCart() {
+    const { data, error } = await supabase.auth.updateUser({
+        data: {
+            cart: []
+        }
+
+    })
+
+    if (error) {
+        throw new Error(error)
+    }
+
+    return { data }
 }

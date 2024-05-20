@@ -13,6 +13,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import Profile from "./pages/Profile";
 import { Toaster } from "react-hot-toast";
 import Cart from "./pages/Cart";
+import PayBill from "./pages/payBill";
 
 const theme = createTheme({
   palette: {
@@ -90,6 +91,7 @@ function App() {
               <Route path="/store" element={<Store />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/payBill" element={<PayBill />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/signUp" element={<SignUp />} />
